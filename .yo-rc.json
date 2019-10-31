@@ -1,0 +1,27 @@
+{
+  "generator-clearphp": {
+    "run": 31,
+    "github": {
+      "ssh": "git@github.com:tollwerk/intentio.git",
+      "https": "https://github.com/tollwerk/intentio"
+    },
+    "codeclimate": "74c7e9f6c7928da92fc1e46934909f988c1313ef3aa01cc8f6cf17289e97d983",
+    "scrutinizer": true,
+    "coverage": true,
+    "docs": false,
+    "apidocs": false,
+    "year": 2019,
+    "vendor": "tollwerk",
+    "project": "intentio",
+    "description": "INTENTIO client in PHP",
+    "website": "https://github.com/tollwerk/intentio",
+    "license": "MIT",
+    "stability": "stable",
+    "namespace": "Tollwerk",
+    "module": "Intentio",
+    "php": ">=7.2",
+    "authorName": "tollwerk GmbH",
+    "authorEmail": "info@tollwerk.de",
+    "authorWebsite": "https://tollwerk.de"
+  }
+}
