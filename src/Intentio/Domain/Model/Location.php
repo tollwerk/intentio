@@ -52,6 +52,12 @@ class Location
      * @var string
      */
     protected $name;
+    /**
+     * Street address
+     *
+     * @var string
+     */
+    protected $streetAddress;
 
     /**
      * Return the name
@@ -72,12 +78,44 @@ class Location
      */
     public function setName(string $name): void
     {
-        if (!strlen($name)) {
+        $this->validateStringArgument($name, 'name');
+        $this->name = $name;
+    }
+
+    /**
+     * Return the street address
+     *
+     * @return string Street address
+     */
+    public function getStreetAddress(): string
+    {
+        return $this->streetAddress;
+    }
+
+    /**
+     * Set the street address
+     *
+     * @param string $streetAddress Street address
+     */
+    public function setStreetAddress(string $streetAddress): void
+    {
+        $this->validateStringArgument($streetAddress, 'streetAddress');
+        $this->streetAddress = $streetAddress;
+    }
+
+    /**
+     * Validate a string argument
+     *
+     * @param string $value    Value
+     * @param string $property Property name
+     */
+    protected function validateStringArgument(string $value, string $property): void
+    {
+        if (!strlen($value)) {
             throw new InvalidArgumentException(
-                sprintf(InvalidArgumentException::EMPTY_VALUE_NOT_ALLOWED_STR, 'name'),
+                sprintf(InvalidArgumentException::EMPTY_VALUE_NOT_ALLOWED_STR, $property),
                 InvalidArgumentException::EMPTY_VALUE_NOT_ALLOWED
             );
         }
-        $this->name = $name;
     }
 }

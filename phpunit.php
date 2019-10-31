@@ -1,5 +1,7 @@
 <?php
 
+use Dotenv\Dotenv;
+
 error_reporting(E_ALL);
 $autoloader = __DIR__.'/vendor/autoload.php';
 if (!file_exists($autoloader)) {
@@ -8,3 +10,5 @@ if (!file_exists($autoloader)) {
     exit(1);
 }
 require $autoloader;
+
+Dotenv::create(__DIR__)->load();

@@ -49,21 +49,40 @@ use Tollwerk\Intentio\Tests\AbstractTestCase;
 class LocationTest extends AbstractTestCase
 {
     /**
-     * Test the location
+     * Test the location getters & setters
+     *
+     * @dataProvider propertyDataProvider
+     *
+     * @param string $property Property name
      */
-    public function testLocation(): void
+    public function testLocation(string $property): void
     {
         $location = new Location();
         $this->assertInstanceOf(Location::class, $location);
 
-        // Test the name
-        $name = md5(rand());
-        $location->setName($name);
-        $this->assertEquals($name, $location->getName());
+        // Test the property
+        $value          = md5(rand());
+        $propertyGetter = 'get'.ucfirst($property);
+        $propertySetter = 'set'.ucfirst($property);
+        $location->$propertySetter($value);
+        $this->assertEquals($value, $location->$propertyGetter());
 
         // Test with an empty name
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionCode(InvalidArgumentException::EMPTY_VALUE_NOT_ALLOWED);
-        $location->setName('');
+        $location->$propertySetter('');
+    }
+
+    /**
+     * Data provider for getters & setters
+     *
+     * @return array[] Property names
+     */
+    public function propertyDataProvider(): array
+    {
+        return [
+            ['name'],
+            ['streetAddress'],
+        ];
     }
 }

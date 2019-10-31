@@ -36,13 +36,15 @@
 
 namespace Tollwerk\Intentio\Domain\Exception;
 
+use Tollwerk\Intentio\Domain\Contract\ExceptionInterface;
+
 /**
  * InvalidArgumentException
  *
  * @package    Tollwerk\Intentio
  * @subpackage Tollwerk\Intentio\Domain\Exception
  */
-class InvalidArgumentException extends \InvalidArgumentException
+class InvalidArgumentException extends \InvalidArgumentException implements ExceptionInterface
 {
     /**
      * Empty value not allowed
